@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class character : MonoBehaviour {
 	public float moveSpeed;
+	public int orientation;
 	public bool onGround;
 	private Rigidbody rb;
 	// Use this for initialization
 	void Start () {
 		moveSpeed = 10f;
+		orientation=1;
 		onGround = true;
 		rb = GetComponent<Rigidbody>();
 	}
@@ -16,9 +18,8 @@ public class character : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//Jump
-		if(Input.GetButton("Jump")){
-			print(transform.rotation);
-				rb.velocity = new Vector3(0f,3f,1.5f);				
+		if(Input.GetKeyUp(KeyCode.Space)){
+			rb.velocity = new Vector3(0f,orientation*3f,1.5f);				
 		}
 		//Rotate left
 		if(Input.GetKey(KeyCode.G)){
@@ -44,10 +45,16 @@ public class character : MonoBehaviour {
 			// transform.rotation = Quaternion.Euler (90,0, 0);	
 			transform.Rotate(0,moveSpeed,0);			
 		}
-		if(Input.GetKey(KeyCode.W)){
-			transform.rotation = Quaternion.Euler (180,0, 0);				
-		}
-		
+		//Backward Position
+		if(Input.GetKeyDown(KeyCode.Mouse0)){
+			orientation=1;
+			transform.rotation = Quaternion.Euler (0,180, 0);				
+		}	
+		//Frontward position
+		if(Input.GetKeyDown(KeyCode.Mouse1)){
+			orientation=-1;
+			transform.rotation = Quaternion.Euler (0,0, 0);				
+		}	
 		//Move Forward & Backward
 		// transform.Translate(0f,0f,moveSpeed*Input.GetAxis("Vertical")*Time.deltaTime);
 		
