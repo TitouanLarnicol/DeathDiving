@@ -54,10 +54,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Menu\ButtonManager.cs" />
+     <Compile Include="Assets\script\animation.cs" />
      <Compile Include="Assets\script\CameraController.cs" />
      <Compile Include="Assets\script\CameraFollow.cs" />
      <Compile Include="Assets\script\CameraSwitch.cs" />
      <Compile Include="Assets\script\character.cs" />
+     <Compile Include="Assets\script\collision.cs" />
+     <Compile Include="Assets\script\trick.cs" />
      <None Include="Assets\Stylized Nature Environment\ReadMe.txt" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/home/titouan/Documents/WorkSpace/VideoGame/DeathDiving/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
