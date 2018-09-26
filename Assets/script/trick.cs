@@ -17,7 +17,7 @@ public class trick : MonoBehaviour {
 		
 
 		if(Input.GetKey(KeyCode.Space)){
-	 		transform.Rotate(0.5f,0,0);			
+	 		transform.Rotate(0.8f,0,0);			
 		}
 	}
 }
