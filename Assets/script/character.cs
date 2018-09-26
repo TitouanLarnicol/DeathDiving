@@ -10,10 +10,10 @@ public class character : MonoBehaviour {
 	private Rigidbody rb;
 	// Use this for initialization
 	void Start () {
-		moveSpeed = 200f;
+		moveSpeed = 300f;
 		orientation=1;
 		onGround=true;
-		inertia = moveSpeed;
+		inertia = 20;
 		rb = GetComponent<Rigidbody>();
 		// box.enabled = true;
 	}
@@ -23,13 +23,16 @@ public class character : MonoBehaviour {
 				
 		if(Input.GetKey(KeyCode.UpArrow) && !onGround){
 			// transform.rotation = Quaternion.Euler (90,0, 0);	
-			transform.Rotate(moveSpeed,0,0);
-			rb.AddTorque(transform.right * moveSpeed * Time.deltaTime);			
+			transform.Rotate(moveSpeed * Time.deltaTime,0,0);	
+			if(inertia<moveSpeed)	
+			inertia+=20;	
+			print(inertia);
 		}
 		if(Input.GetKey(KeyCode.DownArrow)&& !onGround){
 			// transform.rotation = Quaternion.Euler (90,0, 0);	
-			transform.Rotate(- moveSpeed * Time.deltaTime,0,0);	
-			inertia+=25;			
+			transform.Rotate(-moveSpeed * Time.deltaTime,0,0);
+			if(inertia<moveSpeed)	
+			inertia+=20;			
 		}
 		if(Input.GetKey(KeyCode.H) && !onGround){
 			// transform.rotation = Quaternion.Euler (90,0, 0);	
@@ -65,24 +68,28 @@ public class character : MonoBehaviour {
 		//Jump
 		if(Input.GetKeyUp(KeyCode.Space) && onGround){
 			rb.constraints = RigidbodyConstraints.None;
-			rb.velocity = new Vector3(0f,2*moveSpeed * Time.deltaTime,moveSpeed * Time.deltaTime);		
+			rb.AddForce(0,0,30f*moveSpeed * Time.deltaTime);
+			rb.velocity = new Vector3(0f,0.9f*moveSpeed * Time.deltaTime,0);		
 			onGround=false;		
 		}
-		if(Input.GetKey(KeyCode.Space)){
+		if(Input.GetKey(KeyCode.Space) && onGround){
 			rb.constraints = RigidbodyConstraints.FreezePositionZ;
 		}
 		if(Input.GetKeyUp(KeyCode.DownArrow) && !onGround){
-			// transform.rotation = Quaternion.Euler (90,0, 0);	
-			rb.AddTorque(-(transform.right+new Vector3(10f,0,0))*inertia/2 * Time.deltaTime,ForceMode.Acceleration);	
+			rb.AddTorque(-(transform.right+new Vector3(10f,0,0))*inertia * Time.deltaTime,ForceMode.Acceleration);	
+		}
+		if(Input.GetKeyUp(KeyCode.UpArrow) && !onGround){
+			rb.AddTorque((transform.right+new Vector3(10f,0,0))*inertia * Time.deltaTime,ForceMode.Acceleration);			
 		}
 	}
 	void OnCollisionEnter(Collision col){
 		onGround=true;
+		inertia=0;
+		rb.AddTorque(0f,0f,0f);
+		rb.AddForce(0f,0f,0f);
 		print(transform.rotation);
-	}
-	bool canJump(){
-
-		return true;
+		if(transform.rotation.x<0.3f || transform.rotation.x>-0.3f )
+			transform.rotation = Quaternion.Euler (0,0, 0);	
 	}
 
 	
