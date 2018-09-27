@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class trick : MonoBehaviour {
 
-	// Use this for initialization
+	private Transform child;
 	void Start () {
-		
+		child = transform.GetChild(0);
 	}
 	
 	// Update is called once per frame
@@ -14,10 +14,9 @@ public class trick : MonoBehaviour {
 		if(Input.GetKeyUp(KeyCode.Space)){
 			transform.DetachChildren();			
 		}
-		
-
 		if(Input.GetKey(KeyCode.Space)){
 	 		transform.Rotate(0.8f,0,0);			
 		}
+		
 	}
 }

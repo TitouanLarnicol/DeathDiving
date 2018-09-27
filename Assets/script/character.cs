@@ -7,15 +7,18 @@ public class character : MonoBehaviour {
 	private int orientation;
 	public bool onGround;
 	public float inertia;
+	private Vector3 initialPosition;
 	private Rigidbody rb;
 	// Use this for initialization
 	void Start () {
+		
 		moveSpeed = 300f;
+		initialPosition = transform.position;
 		orientation=0;
 		onGround=true;
 		inertia = 20;
 		rb = GetComponent<Rigidbody>();
-		// box.enabled = true;
+		rb.constraints = RigidbodyConstraints.FreezePositionZ;
 	}
 	
 	// Update is called once per frame
@@ -81,11 +84,13 @@ public class character : MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision col){
 		onGround=true;
-		rb.AddTorque(0f,0f,0f);
-		rb.AddForce(0f,0f,0f);
-		if(transform.rotation.x<0.4f && transform.rotation.x>-0.4f )
+		rb.velocity = Vector3.zero;	
+		rb.constraints = RigidbodyConstraints.FreezePositionZ;
+		if(transform.rotation.x<0.4f && transform.rotation.x>-0.4f ){
 			transform.rotation = Quaternion.Euler (0,0, 0);
-			rb.velocity = Vector3.zero;	
+			rb.velocity = Vector3.zero;			
+		}
+
 	}
 
 	public void AdjustInertia(float newInertia){
