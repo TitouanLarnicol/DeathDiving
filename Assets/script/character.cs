@@ -11,12 +11,10 @@ public class character : MonoBehaviour {
 	private Rigidbody rb;
 	// Use this for initialization
 	void Start () {
-		
-		moveSpeed = 300f;
 		initialPosition = transform.position;
 		orientation=0;
 		onGround=true;
-		inertia =0f;
+		inertia =100f;
 		rb = GetComponent<Rigidbody>();
 		rb.constraints = RigidbodyConstraints.FreezePositionZ;
 	}
@@ -32,7 +30,7 @@ public class character : MonoBehaviour {
 		}
 		if(Input.GetKey(KeyCode.H) && !onGround){
 			transform.Rotate(0,0,-moveSpeed*Time.deltaTime);	
-			rb.AddTorque(-transform.forward * moveSpeed * Time.deltaTime);	
+			// rb.AddTorque(-transform.forward * moveSpeed * Time.deltaTime);	
 		}
 		
 		if(Input.GetKey(KeyCode.LeftArrow)&& !onGround){
@@ -41,11 +39,6 @@ public class character : MonoBehaviour {
 		if(Input.GetKey(KeyCode.RightArrow)&& !onGround){	
 			transform.Rotate(0,moveSpeed* Time.deltaTime,0);			
 		}
-		//Backward Position
-		if(Input.GetKeyDown(KeyCode.Mouse0)){
-			orientation=1;
-							
-		}	
 		//Frontward position
 		if(Input.GetKeyDown(KeyCode.Mouse1)){
 			if(orientation==0){
@@ -67,8 +60,9 @@ public class character : MonoBehaviour {
 		//Jump
 		if(Input.GetKeyUp(KeyCode.Space) && onGround){
 			rb.constraints = RigidbodyConstraints.None;
+			print(inertia);
 			rb.AddForce(0,0,30f*inertia* Time.deltaTime);
-			rb.velocity = new Vector3(0f,moveSpeed * Time.deltaTime,0);		
+			rb.velocity = new Vector3(0f,inertia * Time.deltaTime,0);		
 			onGround=false;		
 		}
 		if(Input.GetKey(KeyCode.Space) && onGround){
@@ -92,8 +86,12 @@ public class character : MonoBehaviour {
 
 	}
 
-	public void AdjustInertia(float newInertia){
+	public void adjustInertia(float newInertia){
 		inertia = newInertia;
+	}
+	public void adjustMoveSpeed(float newSpeed){
+		moveSpeed = newSpeed;
+		print("moveSpeed");
 	}
 
 	

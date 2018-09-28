@@ -27,6 +27,15 @@ public class animation : MonoBehaviour {
 			animator.SetBool("goTuck",false);
 			animator.SetBool("isTucking",true);
 		}
+		if(Input.GetKeyDown(KeyCode.X)){
+			animator.SetBool("goJapan",true);
+			animator.SetBool("isJapan",false);
+		}
+		if(Input.GetKeyUp(KeyCode.X)){
+			animator.SetBool("goJapan",false);
+			animator.SetBool("isJapan",true);
+		}
+		
 		
 		// if(Input.GetKeyUp(KeyCode.K)){
 			
