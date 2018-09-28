@@ -16,7 +16,7 @@ public class character : MonoBehaviour {
 		initialPosition = transform.position;
 		orientation=0;
 		onGround=true;
-		inertia = 20;
+		inertia =0f;
 		rb = GetComponent<Rigidbody>();
 		rb.constraints = RigidbodyConstraints.FreezePositionZ;
 	}
@@ -67,12 +67,12 @@ public class character : MonoBehaviour {
 		//Jump
 		if(Input.GetKeyUp(KeyCode.Space) && onGround){
 			rb.constraints = RigidbodyConstraints.None;
-			rb.AddForce(0,0,30f*inertia * Time.deltaTime);
+			rb.AddForce(0,0,30f*inertia* Time.deltaTime);
 			rb.velocity = new Vector3(0f,moveSpeed * Time.deltaTime,0);		
 			onGround=false;		
 		}
 		if(Input.GetKey(KeyCode.Space) && onGround){
-			// inertia+=3;
+
 			rb.constraints = RigidbodyConstraints.FreezePositionZ;
 		}
 		if(Input.GetKeyUp(KeyCode.DownArrow) && !onGround){
@@ -84,12 +84,11 @@ public class character : MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision col){
 		onGround=true;
-		rb.velocity = Vector3.zero;	
-		rb.constraints = RigidbodyConstraints.FreezePositionZ;
-		if(transform.rotation.x<0.4f && transform.rotation.x>-0.4f ){
-			transform.rotation = Quaternion.Euler (0,0, 0);
-			rb.velocity = Vector3.zero;			
-		}
+		
+		// if(transform.rotation.x<0.4f && transform.rotation.x>-0.4f ){
+		// 	transform.rotation = Quaternion.Euler (0,0, 0);
+		// 	rb.velocity = Vector3.zero;			
+		// }
 
 	}
 

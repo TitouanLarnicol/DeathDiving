@@ -6,13 +6,13 @@ public class level : MonoBehaviour {
 	ArrayList levelPosition = new ArrayList();
 	private Rigidbody rb;
 	Transform parent;
+	Vector3 diffParentChild;
 	private int levelNumber;
 	// Use this for initialization
 	void Start () {
 		levelNumber = 0;
 		parent = transform.parent;
-		print(parent.name);
-		levelPosition.Add(GameObject.Find("Position0").transform.position);
+		diffParentChild = transform.position - parent.position;
 		levelPosition.Add(GameObject.Find("Position1").transform.position);
 		levelPosition.Add(GameObject.Find("Position2").transform.position);
 		//transform.position = (Vector3) levelPosition[0];
@@ -24,14 +24,27 @@ public class level : MonoBehaviour {
 		
 	}
 	void OnCollisionEnter(Collision col){
+		
 		if(col.gameObject.name == "Landing"){
-			parent.position = transform.position;
-			transform.SetParent(parent);
 			if(levelNumber<2){
-				parent.position = (Vector3) levelPosition[levelNumber];
+				transform.position = (Vector3) levelPosition[levelNumber];
+				parent.position = transform.position;
+				parent.rotation = transform.rotation;
+				transform.SetParent(parent);
 				levelNumber++;
 			}
 		}
+		else{
+			if(col.gameObject.name =="Plateform1" || col.gameObject.name =="Plateform2" || col.gameObject.name =="Plateform3"){
+				transform.rotation = Quaternion.Euler (0,0, 0);
+				rb.velocity = Vector3.zero;	
+				rb.constraints = RigidbodyConstraints.FreezePositionZ;	
+				parent.position = transform.position - diffParentChild;
+				parent.rotation = transform.rotation;
+				transform.SetParent(parent);
+			}
+		}	
 		
+			
 	}
 }

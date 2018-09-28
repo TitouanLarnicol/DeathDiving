@@ -59,7 +59,6 @@
      <Compile Include="Assets\script\CameraFollow.cs" />
      <Compile Include="Assets\script\CameraSwitch.cs" />
      <Compile Include="Assets\script\character.cs" />
-     <Compile Include="Assets\script\collision.cs" />
      <Compile Include="Assets\script\level.cs" />
      <Compile Include="Assets\script\trick.cs" />
      <None Include="Assets\Stylized Nature Environment\ReadMe.txt" />
