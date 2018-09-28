@@ -13,12 +13,19 @@ public class animation : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.K)){
 			animator.SetBool("isBackflip",false);
-			animator.SetBool("isNormal",true);
-			
+			animator.SetBool("isNormal",true);			
 		}
 		if(Input.GetKeyUp(KeyCode.K)){
 			animator.SetBool("isBackflip",true);
 			animator.SetBool("isNormal",false);
+		}
+		if(Input.GetKeyDown(KeyCode.J)){
+			animator.SetBool("goTuck",true);
+			animator.SetBool("isTucking",false);
+		}
+		if(Input.GetKeyUp(KeyCode.J)){
+			animator.SetBool("goTuck",false);
+			animator.SetBool("isTucking",true);
 		}
 		
 		// if(Input.GetKeyUp(KeyCode.K)){

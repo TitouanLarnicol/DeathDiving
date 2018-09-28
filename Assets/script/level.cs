@@ -28,6 +28,8 @@ public class level : MonoBehaviour {
 		if(col.gameObject.name == "Landing"){
 			if(levelNumber<2){
 				transform.position = (Vector3) levelPosition[levelNumber];
+				transform.rotation = Quaternion.Euler (0,0, 0);
+				rb.velocity = Vector3.zero;
 				parent.position = transform.position;
 				parent.rotation = transform.rotation;
 				transform.SetParent(parent);
