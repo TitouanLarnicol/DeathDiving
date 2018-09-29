@@ -11,12 +11,12 @@ public class trick : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if(Input.GetKeyUp(KeyCode.Space)){
 			transform.DetachChildren();			
 		}
 		if(Input.GetKey(KeyCode.Space)){
-	 		transform.Rotate(0.8f,0,0);			
-		}
-		
+			transform.Rotate(0.8f,0,0);		 				
+		}		
 	}
 }

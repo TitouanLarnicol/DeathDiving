@@ -5,6 +5,7 @@ using UnityEngine;
 public class level : MonoBehaviour {
 	ArrayList levelPosition = new ArrayList();
 	private Rigidbody rb;
+	private IEnumerator coroutine;
 	Transform parent;
 	Vector3 diffParentChild;
 	private int levelNumber;
@@ -24,9 +25,18 @@ public class level : MonoBehaviour {
 		
 	}
 	void OnCollisionEnter(Collision col){
+		coroutine = waitForRespawn(1.2f,col);
+		StartCoroutine(coroutine);
+						
+	}
+	 private IEnumerator waitForRespawn(float waitTime,Collision col)
+    {
 		
-		if(col.gameObject.name == "Landing"){
+		rb.angularDrag = 1000;
+        yield return new WaitForSeconds(waitTime);
+		if(col.gameObject.name == "waterLanding"){
 			if(levelNumber<2){
+				print("on passe au if");
 				transform.position = (Vector3) levelPosition[levelNumber];
 				transform.rotation = Quaternion.Euler (0,0, 0);
 				rb.velocity = Vector3.zero;
@@ -38,15 +48,14 @@ public class level : MonoBehaviour {
 		}
 		else{
 			if(col.gameObject.name =="Plateform1" || col.gameObject.name =="Plateform2" || col.gameObject.name =="Plateform3"){
-				transform.rotation = Quaternion.Euler (0,0, 0);
-				rb.velocity = Vector3.zero;	
+				// rb.velocity = Vector3.zero;	
 				rb.constraints = RigidbodyConstraints.FreezePositionZ;	
 				parent.position = transform.position - diffParentChild;
-				parent.rotation = transform.rotation;
+				parent.rotation = Quaternion.Euler (0,0, 0);
 				transform.SetParent(parent);
 			}
-		}	
-		
-			
-	}
+		}
+		rb.drag = 0;
+		rb.angularDrag = 1;
+    }
 }
