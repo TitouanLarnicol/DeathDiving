@@ -61,6 +61,7 @@
      <Compile Include="Assets\script\character.cs" />
      <Compile Include="Assets\script\level.cs" />
      <Compile Include="Assets\script\trick.cs" />
+     <Compile Include="Assets\script\waterCollision.cs" />
      <None Include="Assets\Stylized Nature Environment\ReadMe.txt" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/home/titouan/Documents/WorkSpace/VideoGame/DeathDiving/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
@@ -308,6 +309,10 @@
  <Reference Include="Boo.Lang">
  <HintPath>/home/titouan/Unity-2018.2.6f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{FF3B4B14-B4B2-BD19-73B5-68BF17B07994}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

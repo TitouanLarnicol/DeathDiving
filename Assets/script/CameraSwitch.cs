@@ -8,17 +8,9 @@ public class CameraSwitch : MonoBehaviour {
     public GameObject cameraOne;
     public GameObject cameraTwo;
 
-    AudioListener cameraOneAudioLis;
-    AudioListener cameraTwoAudioLis;
-
     // Use this for initialization
     void Start()
     {
-
-        //Get Camera Listeners
-        cameraOneAudioLis = cameraOne.GetComponent<AudioListener>();
-        cameraTwoAudioLis = cameraTwo.GetComponent<AudioListener>();
-
         //Camera Position Set
         cameraPositionChange(PlayerPrefs.GetInt("CameraPosition"));
     }
@@ -39,7 +31,7 @@ public class CameraSwitch : MonoBehaviour {
     //Change Camera Keyboard
     void switchCamera()
     {
-        if (Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             cameraChangeCounter();
         }
@@ -68,9 +60,6 @@ public class CameraSwitch : MonoBehaviour {
         if (camPosition == 0)
         {
             cameraOne.SetActive(true);
-            cameraOneAudioLis.enabled = true;
-
-            cameraTwoAudioLis.enabled = false;
             cameraTwo.SetActive(false);
         }
 
@@ -78,9 +67,6 @@ public class CameraSwitch : MonoBehaviour {
         if (camPosition == 1)
         {
             cameraTwo.SetActive(true);
-            cameraTwoAudioLis.enabled = true;
-
-            cameraOneAudioLis.enabled = false;
             cameraOne.SetActive(false);
         }
 
