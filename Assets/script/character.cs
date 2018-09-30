@@ -11,6 +11,7 @@ public class character : MonoBehaviour {
 	 public Slider impulsionSlider,speedSlider;
 	private Vector3 initialPosition;
 	private Rigidbody rb;
+	public Animator animator;
 	// Use this for initialization
 	void Awake(){
 		childScript = this;
@@ -26,11 +27,37 @@ public class character : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
 		rb.constraints = RigidbodyConstraints.FreezePositionZ;
 		rb.angularDrag = 1;
+		animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//Frontward position
+		
+			if(Input.GetKeyDown(KeyCode.K) && !onGround){
+			animator.SetBool("isBackflip",false);
+			animator.SetBool("isNormal",true);			
+		}
+		if(Input.GetKeyUp(KeyCode.K) && !onGround){
+			animator.SetBool("isBackflip",true);
+			animator.SetBool("isNormal",false);
+		}
+		if(Input.GetKeyDown(KeyCode.J) && !onGround){
+			animator.SetBool("goTuck",true);
+			animator.SetBool("isTucking",false);
+		}
+		if(Input.GetKeyUp(KeyCode.J) && !onGround){
+			animator.SetBool("goTuck",false);
+			animator.SetBool("isTucking",true);
+		}
+		if(Input.GetKeyDown(KeyCode.X) && !onGround){
+			animator.SetBool("goJapan",true);
+			animator.SetBool("isJapan",false);
+		}
+		if(Input.GetKeyUp(KeyCode.X)  && !onGround){
+			animator.SetBool("goJapan",false);
+			animator.SetBool("isJapan",true);
+		}
 		if(Input.GetKeyDown(KeyCode.Mouse1)){
 			if(orientation==1f){
 				transform.rotation = Quaternion.Euler (0,180, 0);
