@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class character : MonoBehaviour {
-	public float moveSpeed,stopInertia,inertia;
-	public float  orientation;
+	public float moveSpeed,stopInertia,inertia,xOrigin,orientation;
 	public static character childScript;
 	public bool onGround;
 	 public Slider impulsionSlider,speedSlider;
-	private Vector3 initialPosition;
 	private Rigidbody rb;
+	Scene scene;
 	public Animator animator;
 	// Use this for initialization
 	void Awake(){
 		childScript = this;
 	}
 	void Start () {
+		scene = SceneManager.GetActiveScene();
 		impulsionSlider = GameObject.Find("impulsion").GetComponent<Slider>();
 		speedSlider = GameObject.Find("rotationSpeed").GetComponent<Slider>();
-		initialPosition = transform.position;
 		orientation=1f;
 		onGround=true;
 		adjustInertia(impulsionSlider.value);
@@ -60,11 +60,21 @@ public class character : MonoBehaviour {
 		}
 		if(Input.GetKeyDown(KeyCode.Mouse1)){
 			if(orientation==1f){
-				transform.rotation = Quaternion.Euler (0,180, 0);
+				if(scene.name=="MountainLake"){
+				transform.rotation = Quaternion.Euler(0,0,0);
+				}
+				else{
+					transform.rotation = Quaternion.Euler (0,180, 0);
+				}
 				orientation=-1f;
 			}
 			else{
-				transform.rotation = Quaternion.Euler (0,0, 0);
+				if(scene.name=="MountainLake"){
+				transform.rotation = Quaternion.Euler (0,180,0);
+				}
+				else{
+					transform.rotation = Quaternion.Euler (0,0, 0);
+				}
 				orientation=1f;
 			}					
 		}	
@@ -77,17 +87,26 @@ public class character : MonoBehaviour {
 	void FixedUpdate(){
 		//Jump
 		if(Input.GetKeyUp(KeyCode.Space) && onGround){
-			if(orientation==-1)
-				rb.AddForce(0,0,-500f*transform.rotation.x * inertia*Time.deltaTime,ForceMode.Impulse);
+			if(orientation==-1){
+				print(transform.rotation.x);
+				print("orientation 1:");
+				print(orientation);
+				rb.AddRelativeForce(0,0,-5f*(transform.rotation.x+0.25f) * inertia*Time.deltaTime,ForceMode.Impulse);
+			}
 			else{
-				rb.AddForce(0,0,5f*transform.rotation.x * inertia*Time.deltaTime,ForceMode.Impulse);
+				print(transform.rotation.x);
+				print("orientation 2:");
+				print(orientation);
+				rb.AddRelativeForce(0,0,5f*(transform.rotation.x+(0.25f-transform.rotation.x)) * inertia*Time.deltaTime,ForceMode.Impulse);
 			}
 			rb.constraints = RigidbodyConstraints.None;
 			rb.velocity = new Vector3(0f,inertia * Time.deltaTime,0);		
 			onGround=false;		
 		}
+		if(Input.GetKeyDown(KeyCode.Space) && onGround){
+			xOrigin = transform.rotation.x;
+		}
 		if(Input.GetKey(KeyCode.Space) && onGround){
-			print(orientation);
 			rb.constraints = RigidbodyConstraints.FreezePositionZ;
 		}
 		if(Input.GetKey(KeyCode.DownArrow)&& !onGround){
@@ -109,14 +128,9 @@ public class character : MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision col){
 		onGround=true;
-		
 		if(transform.rotation.x<0.4f && transform.rotation.x>-0.4f ){
 			// transform.rotation = Quaternion.Euler (0,0, 0);
-			// rb.velocity = Vector3.zero;	
-			print("you won");		
-		}
-		else{
-			print("you lose");
+			// rb.velocity = Vector3.zero;			
 		}
 
 	}
@@ -126,7 +140,6 @@ public class character : MonoBehaviour {
 	}
 	public void adjustMoveSpeed(float newSpeed){
 		moveSpeed = newSpeed;
-		print("moveSpeed");
 	}
 }
 	
