@@ -78,10 +78,11 @@ public class character : MonoBehaviour {
 		//Jump
 		if(Input.GetKeyUp(KeyCode.Space) && onGround){
 			if(orientation==-1)
-				rb.AddForce(0,0,-500*transform.rotation.x * inertia*Time.deltaTime,ForceMode.Impulse);
-			print(transform.rotation.x );
+				rb.AddForce(0,0,-500f*transform.rotation.x * inertia*Time.deltaTime,ForceMode.Impulse);
+			else{
+				rb.AddForce(0,0,5f*transform.rotation.x * inertia*Time.deltaTime,ForceMode.Impulse);
+			}
 			rb.constraints = RigidbodyConstraints.None;
-			rb.AddForce(0,0,5*transform.rotation.x * inertia*Time.deltaTime,ForceMode.Impulse);
 			rb.velocity = new Vector3(0f,inertia * Time.deltaTime,0);		
 			onGround=false;		
 		}
