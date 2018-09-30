@@ -7,25 +7,21 @@ using UnityEngine.SceneManagement;
 public class loadWorld : MonoBehaviour {
 
 	// Use this for initialization
-	private Text text;
+	private Text text1,text2,text3,text4;
 	private Canvas canvas;
 	void Start () {
-		text = GameObject.Find("world1Text").GetComponent<Text>();
-		canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-		canvas.enabled=false;
+		text1 = GameObject.Find("world1Text").GetComponent<Text>();		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	}
 	void OnMouseDown(){
 		SceneManager.LoadScene("MainScene");
 	}
 	void OnMouseOver(){
-		canvas.enabled = true;
+		text1.color = Color.white;
 	}
 	void OnMouseExit(){
-		canvas.enabled = false;
+		text1.color = Color.black;
 	}
 	
 }

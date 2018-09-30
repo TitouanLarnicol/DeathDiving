@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Fonts\Script\scriptTexttest.cs" />
      <Compile Include="Assets\Menu\ButtonManager.cs" />
      <Compile Include="Assets\script\CameraController.cs" />
      <Compile Include="Assets\script\CameraFollow.cs" />
@@ -62,6 +63,8 @@
      <Compile Include="Assets\script\loadWorld.cs" />
      <Compile Include="Assets\script\trick.cs" />
      <Compile Include="Assets\script\waterCollision.cs" />
+     <None Include="Assets\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
+     <None Include="Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
      <None Include="Assets\Stylized Nature Environment\ReadMe.txt" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/home/titouan/Documents/WorkSpace/VideoGame/DeathDiving/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
