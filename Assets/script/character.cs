@@ -88,15 +88,10 @@ public class character : MonoBehaviour {
 		//Jump
 		if(Input.GetKeyUp(KeyCode.Space) && onGround){
 			if(orientation==-1){
-				print(transform.rotation.x);
-				print("orientation 1:");
-				print(orientation);
-				rb.AddRelativeForce(0,0,-5f*(transform.rotation.x+0.25f) * inertia*Time.deltaTime,ForceMode.Impulse);
+				rb.AddRelativeForce(0,0,-5f*(-transform.rotation.x+0.25f) * inertia*Time.deltaTime,ForceMode.Impulse);
+				
 			}
 			else{
-				print(transform.rotation.x);
-				print("orientation 2:");
-				print(orientation);
 				rb.AddRelativeForce(0,0,5f*(transform.rotation.x+(0.25f-transform.rotation.x)) * inertia*Time.deltaTime,ForceMode.Impulse);
 			}
 			rb.constraints = RigidbodyConstraints.None;
