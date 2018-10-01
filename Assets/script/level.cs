@@ -10,15 +10,15 @@ public class level : MonoBehaviour {
 	private IEnumerator coroutine;
 	Transform parent;
 	Vector3 diffParentChild;
-	private int levelNumber;
+	public int stage,levelLanding;
 	private Scene scene;
 	public GameObject instanceScript;
 	character characterInstance;
 	// Use this for initialization
 	void Start () {
+		levelLanding=0;
 		characterInstance = instanceScript.GetComponent<character>();
-		setScene();
-		rb = GetComponent<Rigidbody>(); 
+		setScene(); 
 	}
 
 	void OnCollisionEnter(Collision col){
@@ -35,10 +35,18 @@ public class level : MonoBehaviour {
 		rb.angularDrag = 1000;
         yield return new WaitForSeconds(waitTime);
 		if(col.gameObject.name == "landingPlane" && alreadyTrigger==false){
-				if(levelNumber<2){
-					levelNumber++;
-				setOrientation();
-				alreadyTrigger = true;
+				if(stage<2){
+					stage++;
+					setOrientation();
+					alreadyTrigger = true;
+				}
+				else{
+					if(stage == 2 && levelLanding !=2){
+						stage = 0;
+						levelLanding++;
+						setOrientation();
+					alreadyTrigger = true;
+					}
 				}
 		}
 		else{
@@ -57,21 +65,24 @@ public class level : MonoBehaviour {
 			else{
 				transform.rotation = Quaternion.Euler (0,0, 0);
 			}
+			//Re attach parent & child with right position
 			parent.rotation = transform.rotation;
-			transform.position = (Vector3) levelPosition[levelNumber];
+			transform.position = (Vector3) levelPosition[stage];
 			characterInstance.orientation = 1;	
 			rb.velocity = Vector3.zero;
 			parent.position = transform.position;
 			transform.SetParent(parent);
 	}
 	void setScene(){
+		levelLanding = 0;
+		stage = 0;
 		alreadyTrigger = false;
-		levelNumber = 0;
 		scene = SceneManager.GetActiveScene();
 		parent = transform.parent;
 		diffParentChild = transform.position - parent.position;
 		levelPosition.Add(GameObject.Find("Position0").transform.position);
 		levelPosition.Add(GameObject.Find("Position1").transform.position);
 		levelPosition.Add(GameObject.Find("Position2").transform.position);
+		rb = GetComponent<Rigidbody>();
 	}
 }
