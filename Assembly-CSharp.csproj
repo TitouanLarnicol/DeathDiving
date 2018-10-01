@@ -59,6 +59,7 @@
      <Compile Include="Assets\script\CameraFollow.cs" />
      <Compile Include="Assets\script\CameraSwitch.cs" />
      <Compile Include="Assets\script\character.cs" />
+     <Compile Include="Assets\script\Helper.cs" />
      <Compile Include="Assets\script\level.cs" />
      <Compile Include="Assets\script\loadWorld.cs" />
      <Compile Include="Assets\script\trick.cs" />
