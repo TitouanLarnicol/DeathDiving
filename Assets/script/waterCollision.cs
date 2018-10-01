@@ -13,9 +13,36 @@ public class waterCollision : MonoBehaviour {
 		flagTL = GameObject.Find("topLeft");
 		flagBR = GameObject.Find("bottomRight");
 		flagBL = GameObject.Find("bottomLeft");
+		LandingPlane = GameObject.Find("landingPlane");
 		width = getWidth(flagTR,flagTL);
 		height = getHeight(flagBR,flagTR);
-		LandingPlane = GameObject.Find("landingPlane");
+		setPlane();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+
+	// void OnTriggerStay (Collider other){
+
+	// 	other.GetComponent<Rigidbody>().AddForce(Vector3.up * hoverForce,ForceMode.Acceleration);
+	// }
+	void OnCollisionEnter(Collision col){
+		if(col.transform.name=="RobotJump"){
+			
+		}
+		
+	}
+	float getWidth(GameObject tr,GameObject tl){
+		float width = Mathf.Sqrt(Mathf.Pow(tl.transform.position.x-tr.transform.position.x,2));
+		return width;
+	}
+	float getHeight(GameObject br,GameObject tr){
+		float height = Mathf.Sqrt(Mathf.Pow(tr.transform.position.z-br.transform.position.z,2));
+		return height;
+	}
+	void setPlane(){
 		MeshFilter mf = LandingPlane.AddComponent(typeof(MeshFilter)) as MeshFilter;
 		MeshRenderer mr = LandingPlane.AddComponent(typeof(MeshRenderer)) as MeshRenderer;
 		Mesh m = new Mesh();
@@ -38,29 +65,5 @@ public class waterCollision : MonoBehaviour {
 		m.RecalculateNormals();
 		LandingPlane.transform.eulerAngles = new Vector3(-90,0,0);
 		LandingPlane.transform.position = flagTL.transform.position;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-	// void OnTriggerStay (Collider other){
-
-	// 	other.GetComponent<Rigidbody>().AddForce(Vector3.up * hoverForce,ForceMode.Acceleration);
-	// }
-	void OnCollisionEnter(Collision col){
-		if(col.transform.name=="RobotJump"){
-			Debug.Log(col.transform.name);
-		}
-		
-	}
-	float getWidth(GameObject tr,GameObject tl){
-		float width = Mathf.Sqrt(Mathf.Pow(tl.transform.position.x-tr.transform.position.x,2));
-		return width;
-	}
-	float getHeight(GameObject br,GameObject tr){
-		float height = Mathf.Sqrt(Mathf.Pow(tr.transform.position.z-br.transform.position.z,2));
-		return height;
 	}
 }

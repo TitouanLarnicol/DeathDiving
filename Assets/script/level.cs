@@ -17,14 +17,7 @@ public class level : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		characterInstance = instanceScript.GetComponent<character>();
-		alreadyTrigger = false;
-		levelNumber = 0;
-		scene = SceneManager.GetActiveScene();
-		parent = transform.parent;
-		diffParentChild = transform.position - parent.position;
-		levelPosition.Add(GameObject.Find("Position0").transform.position);
-		levelPosition.Add(GameObject.Find("Position1").transform.position);
-		levelPosition.Add(GameObject.Find("Position2").transform.position);
+		setScene();
 		rb = GetComponent<Rigidbody>(); 
 	}
 
@@ -70,5 +63,15 @@ public class level : MonoBehaviour {
 			rb.velocity = Vector3.zero;
 			parent.position = transform.position;
 			transform.SetParent(parent);
+	}
+	void setScene(){
+		alreadyTrigger = false;
+		levelNumber = 0;
+		scene = SceneManager.GetActiveScene();
+		parent = transform.parent;
+		diffParentChild = transform.position - parent.position;
+		levelPosition.Add(GameObject.Find("Position0").transform.position);
+		levelPosition.Add(GameObject.Find("Position1").transform.position);
+		levelPosition.Add(GameObject.Find("Position2").transform.position);
 	}
 }
