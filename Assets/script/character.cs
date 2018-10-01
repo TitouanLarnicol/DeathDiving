@@ -17,17 +17,18 @@ public class character : MonoBehaviour {
 		childScript = this;
 	}
 	void Start () {
-		scene = SceneManager.GetActiveScene();
 		impulsionSlider = GameObject.Find("impulsion").GetComponent<Slider>();
 		speedSlider = GameObject.Find("rotationSpeed").GetComponent<Slider>();
+		animator = GetComponent<Animator>();
+		rb = GetComponent<Rigidbody>();
+		scene = SceneManager.GetActiveScene();
 		orientation=1f;
 		onGround=true;
 		adjustInertia(impulsionSlider.value);
 		adjustMoveSpeed(speedSlider.value);
-		rb = GetComponent<Rigidbody>();
 		rb.constraints = RigidbodyConstraints.FreezePositionZ;
 		rb.angularDrag = 1;
-		animator = GetComponent<Animator>();
+		
 	}
 	
 	// Update is called once per frame

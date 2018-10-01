@@ -36,8 +36,8 @@ public class waterCollision : MonoBehaviour {
 		(LandingPlane.AddComponent(typeof(MeshCollider)) as MeshCollider).sharedMesh = m;
 		m.RecalculateBounds();
 		m.RecalculateNormals();
-		LandingPlane.transform.eulerAngles = new Vector3(90,0,0);
-		LandingPlane.transform.position = flagBL.transform.position;
+		LandingPlane.transform.eulerAngles = new Vector3(-90,0,0);
+		LandingPlane.transform.position = flagTL.transform.position;
 	}
 	
 	// Update is called once per frame

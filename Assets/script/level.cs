@@ -22,6 +22,7 @@ public class level : MonoBehaviour {
 		scene = SceneManager.GetActiveScene();
 		parent = transform.parent;
 		diffParentChild = transform.position - parent.position;
+		levelPosition.Add(GameObject.Find("Position0").transform.position);
 		levelPosition.Add(GameObject.Find("Position1").transform.position);
 		levelPosition.Add(GameObject.Find("Position2").transform.position);
 		rb = GetComponent<Rigidbody>(); 
@@ -40,25 +41,34 @@ public class level : MonoBehaviour {
     {
 		rb.angularDrag = 1000;
         yield return new WaitForSeconds(waitTime);
-		if(col.gameObject.name == "waterLanding" && alreadyTrigger==false){
+		if(col.gameObject.name == "landingPlane" && alreadyTrigger==false){
 				if(levelNumber<2){
-				if(scene.name=="MountainLake"){
-					transform.rotation = Quaternion.Euler (0,180, 0);
-				}
-				else{
-					transform.rotation = Quaternion.Euler (0,0, 0);
-				}
-				parent.rotation = transform.rotation;
-				transform.position = (Vector3) levelPosition[levelNumber];
-				characterInstance.orientation = 1;	
-				rb.velocity = Vector3.zero;
-				parent.position = transform.position;
-				transform.SetParent(parent);
+					levelNumber++;
+				setOrientation();
 				alreadyTrigger = true;
-				levelNumber++;
-			}
+				}
 		}
+		else{
+			if(col.gameObject.name == "waterLanding"){
+				setOrientation();
+			}
+		}		
 		rb.drag = 0;
 		rb.angularDrag = 1;
     }
+
+	void setOrientation(){
+			if(scene.name=="MountainLake"){
+					transform.rotation = Quaternion.Euler (0,180, 0);
+				}
+			else{
+				transform.rotation = Quaternion.Euler (0,0, 0);
+			}
+			parent.rotation = transform.rotation;
+			transform.position = (Vector3) levelPosition[levelNumber];
+			characterInstance.orientation = 1;	
+			rb.velocity = Vector3.zero;
+			parent.position = transform.position;
+			transform.SetParent(parent);
+	}
 }
