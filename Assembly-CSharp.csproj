@@ -64,6 +64,8 @@
      <Compile Include="Assets\script\loadWorld.cs" />
      <Compile Include="Assets\script\trick.cs" />
      <Compile Include="Assets\script\waterCollision.cs" />
+     <Compile Include="Assets\script\waterFloat.cs" />
+     <None Include="Assets\audio\Rocklynn Productions - Water Splash Pack\Read me.txt" />
      <None Include="Assets\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
      <None Include="Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
      <None Include="Assets\Stylized Nature Environment\ReadMe.txt" />

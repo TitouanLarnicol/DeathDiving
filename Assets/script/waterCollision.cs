@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class waterCollision : MonoBehaviour {
-	private float hoverForce =7f;
 	ArrayList levelLanding = new ArrayList();
 	GameObject flagTR,flagTL,flagBR,flagBL,landingPlane,landingZone;
 	private float width,height;
@@ -35,28 +34,21 @@ public class waterCollision : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(levelInstance.levelLanding ==1 && levelLanding[1].Equals(false)){
-			print("here");
 			Vector3 pos = landingZone.transform.position;
-			landingZone.transform.localScale = new Vector3(1f,1f,0.6f);
+			landingZone.transform.localScale = new Vector3(1f,1f,0.7f);
 			landingZone.transform.position = new Vector3(pos.x,pos.y,pos.z + 2.5f);
 			levelLanding[1]=true;
 			setLanding();
 		}
 		else
 			if(levelInstance.levelLanding ==2 && levelLanding[2].Equals(false)){
-				print("here");
 				Vector3 pos = landingZone.transform.position;
-				landingZone.transform.localScale = new Vector3(1f,1f,0.3f);
+				landingZone.transform.localScale = new Vector3(1f,1f,0.5f);
 				landingZone.transform.position = new Vector3(pos.x,pos.y,pos.z + 5f);
 				levelLanding[2]=true;
 				setLanding();
 			}
 	}
-
-	// void OnTriggerStay (Collider other){
-
-	// 	other.GetComponent<Rigidbody>().AddForce(Vector3.up * hoverForce,ForceMode.Acceleration);
-	// }
 	void OnCollisionEnter(Collision col){
 		if(col.transform.name=="RobotJump"){
 			
@@ -97,9 +89,6 @@ public class waterCollision : MonoBehaviour {
 		landingPlane.transform.eulerAngles = new Vector3(-90,0,0);
 		landingPlane.transform.position = flagTL.transform.position;
 		levelLanding[0] = true;
-	}
-	void changePlane(){
-
 	}
 	void setLanding(){
 		width = getWidth(flagTR,flagTL);

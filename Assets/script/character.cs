@@ -5,10 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class character : MonoBehaviour {
-	public float moveSpeed,stopInertia,inertia,xOrigin,orientation;
+	public float moveSpeed,inertia,impulsion,xOrigin,orientation;
 	public static character childScript;
 	public bool onGround;
-	 public Slider impulsionSlider,speedSlider;
 	private Rigidbody rb;
 	Scene scene;
 	public Animator animator;
@@ -17,15 +16,13 @@ public class character : MonoBehaviour {
 		childScript = this;
 	}
 	void Start () {
-		impulsionSlider = GameObject.Find("impulsion").GetComponent<Slider>();
-		speedSlider = GameObject.Find("rotationSpeed").GetComponent<Slider>();
 		animator = GetComponent<Animator>();
 		rb = GetComponent<Rigidbody>();
 		scene = SceneManager.GetActiveScene();
 		orientation=1f;
 		onGround=true;
-		adjustInertia(impulsionSlider.value);
-		adjustMoveSpeed(speedSlider.value);
+		adjustInertia(300f);
+		adjustImpulsion(300f);
 		rb.constraints = RigidbodyConstraints.FreezePositionZ;
 		rb.angularDrag = 1;
 		
@@ -89,20 +86,21 @@ public class character : MonoBehaviour {
 		//Jump
 		if(Input.GetKeyUp(KeyCode.Space) && onGround){
 			if(orientation==-1){
-				rb.AddRelativeForce(0,0,-5f*(-transform.rotation.x+0.25f) * inertia*Time.deltaTime,ForceMode.Impulse);
-				
+				rb.AddRelativeForce(0,impulsion * Time.deltaTime,0,ForceMode.Impulse);	
+				// rb.AddRelativeForce(0,0,5f*(transform.rotation.x+(transform.rotation.x-0.25f)*inertia)*Time.deltaTime,ForceMode.Impulse);
+				rb.AddRelativeForce(0,0,inertia*Time.deltaTime,ForceMode.Impulse);
 			}
 			else{
-				rb.AddRelativeForce(0,0,5f*(transform.rotation.x+(0.25f-transform.rotation.x)) * inertia*Time.deltaTime,ForceMode.Impulse);
+				rb.AddRelativeForce(0,impulsion * Time.deltaTime,0,ForceMode.Impulse);
+				//rb.AddRelativeForce(0,0,5f*(0.25f-transform.rotation.x)*inertia*Time.deltaTime,ForceMode.Impulse);
+				rb.AddRelativeForce(0,0,inertia*Time.deltaTime,ForceMode.Impulse);
 			}
 			rb.constraints = RigidbodyConstraints.None;
-			rb.velocity = new Vector3(0f,inertia * Time.deltaTime,0);		
 			onGround=false;		
 		}
-		if(Input.GetKeyDown(KeyCode.Space) && onGround){
-			xOrigin = transform.rotation.x;
-		}
 		if(Input.GetKey(KeyCode.Space) && onGround){
+			impulsion*=1.02f;
+			inertia*=1.01f;
 			rb.constraints = RigidbodyConstraints.FreezePositionZ;
 		}
 		if(Input.GetKey(KeyCode.DownArrow)&& !onGround){
@@ -124,6 +122,8 @@ public class character : MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision col){
 		onGround=true;
+		adjustImpulsion(300f);
+		adjustInertia(300f);
 		if(transform.rotation.x<0.4f && transform.rotation.x>-0.4f ){
 			// transform.rotation = Quaternion.Euler (0,0, 0);
 			// rb.velocity = Vector3.zero;			
@@ -134,8 +134,8 @@ public class character : MonoBehaviour {
 	public void adjustInertia(float newInertia){
 		inertia = newInertia;
 	}
-	public void adjustMoveSpeed(float newSpeed){
-		moveSpeed = newSpeed;
+	public void adjustImpulsion(float newImpulsion){
+		impulsion = newImpulsion;
 	}
 }
 	

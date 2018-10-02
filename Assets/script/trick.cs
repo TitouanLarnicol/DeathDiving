@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class trick : MonoBehaviour {
 
-	private Transform child;
 	void Start () {
-		child = transform.GetChild(0);
 	}
 	
 	// Update is called once per frame
