@@ -124,11 +124,6 @@ public class character : MonoBehaviour {
 		onGround=true;
 		adjustImpulsion(300f);
 		adjustInertia(300f);
-		if(transform.rotation.x<0.4f && transform.rotation.x>-0.4f ){
-			// transform.rotation = Quaternion.Euler (0,0, 0);
-			// rb.velocity = Vector3.zero;			
-		}
-
 	}
 
 	public void adjustInertia(float newInertia){
