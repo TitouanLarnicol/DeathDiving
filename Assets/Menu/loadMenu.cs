@@ -20,7 +20,7 @@ public class loadMenu : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
 	  public void OnPointerEnter(PointerEventData eventData)
      {
 		animator.SetBool("textAnimation",true);
-		Kyle.GetComponent<Animation>().Play();
+		// Kyle.GetComponent<Animation>().Play();
 		
      }
 	 public void OnPointerExit(PointerEventData eventData)
