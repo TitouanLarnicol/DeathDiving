@@ -4,28 +4,16 @@ using UnityEngine;
  using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class loadWorld : MonoBehaviour {
-
+public class loadWorld : MonoBehaviour {	
 	// Use this for initialization
-	private Text text;
-	private float zoom;
-	private string world;
+	public Text text;
+	public Font m_Font;
+	public float zoom;
 	private Canvas canvas;
+	public string world;
+	private Font originalFont;
 	void Start () {
-		switch(this.name){
-			case "World1":
-			text = GameObject.Find("DesertTitle").GetComponent<Text>();
-			world="Desert";
-			zoom = 2.5f;
-				break;
-			case "World2":
-			text = GameObject.Find("MountainLakeTitle").GetComponent<Text>();
-			world="MountainLake";
-			zoom = 0.4f;
-				break;
-			default:
-				break;
-		}	
+		originalFont = text.font;
 	}
 	
 	// Update is called once per frame
@@ -34,10 +22,12 @@ public class loadWorld : MonoBehaviour {
 	}
 	void OnMouseOver(){
 		text.color = Color.white;
+		text.font = m_Font;
 		this.transform.localScale = new Vector3(1f,zoom,1f);
 	}
 	void OnMouseExit(){
 		text.color = Color.black;
+		text.font = originalFont;
 		this.transform.localScale = new Vector3(1f,1f,1f);
 	}
 	

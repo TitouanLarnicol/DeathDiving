@@ -113,6 +113,84 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &14757658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 14757661}
+  - component: {fileID: 14757660}
+  - component: {fileID: 14757659}
+  m_Layer: 0
+  m_Name: waterLanding (1)ReflectionMainCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!45 &14757659
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14757658}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
+--- !u!20 &14757660
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14757658}
+  m_Enabled: 0
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
+  m_projectionMatrixMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_RenderingPath: 1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &14757661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 14757658}
+  m_LocalRotation: {x: 0.17971067, y: 0.15481493, z: 0.0286517, w: -0.9710384}
+  m_LocalPosition: {x: 773.9108, y: -264.43298, z: -455.20917}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &22554292
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +599,8 @@ GameObject:
   - component: {fileID: 176144666}
   - component: {fileID: 176144668}
   - component: {fileID: 176144667}
+  - component: {fileID: 176144670}
+  - component: {fileID: 176144669}
   m_Layer: 5
   m_Name: MountainLakeTitle
   m_TagString: Untagged
@@ -543,7 +623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180.2, y: -61.28015}
+  m_AnchoredPosition: {x: 90, y: -102}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &176144667
@@ -566,11 +646,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
-    m_FontSize: 36
+    m_Font: {fileID: 12800000, guid: 4f35bbb528d4d47fa8fc3b6077c0da67, type: 3}
+    m_FontSize: 18
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 47
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -578,7 +658,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: MountainLake
+  m_Text: Mountain Lake
 --- !u!222 &176144668
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -586,6 +666,42 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 176144665}
   m_CullTransparentMesh: 0
+--- !u!61 &176144669
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 176144665}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 32.71057, y: 3.6496391}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 232.20581, y: 22.440489}
+  m_EdgeRadius: 0
+--- !u!114 &176144670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 176144665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb874adb257c42f5b53b7aedcf9ee20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &183794672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,8 +1167,8 @@ Camera:
   m_GameObject: {fileID: 266867703}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.31132078, g: 0.3025098, b: 0.3025098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.45122817, g: 0.62079614, b: 0.735849, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -1265,7 +1381,7 @@ BoxCollider:
   m_GameObject: {fileID: 292891738}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 91.723045, y: 19.2285, z: 73.39045}
   m_Center: {x: 0.25020176, y: 9.114251, z: -10.783511}
@@ -1274,75 +1390,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: b544816461f324e56a39767fdeb5b114,
     type: 2}
   m_PrefabInternal: {fileID: 292891737}
---- !u!1 &301404625
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 301404627}
-  - component: {fileID: 301404626}
-  m_Layer: 0
-  m_Name: waterLanding (1)ReflectionMainCamera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!20 &301404626
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 301404625}
-  m_Enabled: 0
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
-  m_projectionMatrixMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967279
-  m_RenderingPath: 1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &301404627
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 301404625}
-  m_LocalRotation: {x: 0.056213956, y: 0.65932703, z: 0.049542427, w: -0.7481133}
-  m_LocalPosition: {x: 1138.8666, y: -268.91333, z: -88.89266}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &362246541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,6 +1436,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404e7ab56795744c38dafac9574eeb18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 176144667}
+  m_Font: {fileID: 12800000, guid: 83800f348b1804e558505379c0ef1d51, type: 3}
+  zoom: 0.5
+  world: MountainLake
 --- !u!65 &362246544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2414,8 +2465,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 831198843}
-  m_LocalRotation: {x: -0.41940588, y: 0.013466615, z: 0.006222449, w: 0.90767765}
-  m_LocalPosition: {x: -450.30417, y: -571.0427, z: -771.0783}
+  m_LocalRotation: {x: 0.17971067, y: 0.15481493, z: 0.0286517, w: -0.9710384}
+  m_LocalPosition: {x: 56.7843, y: -295.13397, z: -987.28107}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1057277947}
@@ -2538,7 +2589,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180.2, y: -168.77542}
+  m_AnchoredPosition: {x: 90, y: -201}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &989398210
@@ -2561,11 +2612,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
-    m_FontSize: 36
+    m_Font: {fileID: 12800000, guid: 4f35bbb528d4d47fa8fc3b6077c0da67, type: 3}
+    m_FontSize: 18
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 47
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -2589,8 +2640,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1057277947}
-  - component: {fileID: 1057277949}
   - component: {fileID: 1057277948}
+  - component: {fileID: 1057277949}
   m_Layer: 0
   m_Name: World1
   m_TagString: Untagged
@@ -2648,84 +2699,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404e7ab56795744c38dafac9574eeb18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1062920636
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1062920638}
-  - component: {fileID: 1062920637}
-  - component: {fileID: 1062920639}
-  m_Layer: 0
-  m_Name: waterLanding (1)ReflectionSceneCamera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!20 &1062920637
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1062920636}
-  m_Enabled: 0
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
-  m_projectionMatrixMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967279
-  m_RenderingPath: 1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &1062920638
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1062920636}
-  m_LocalRotation: {x: -0.41940588, y: 0.013466615, z: 0.006222449, w: 0.90767765}
-  m_LocalPosition: {x: 265.4, y: -541.36, z: -243.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!45 &1062920639
-Skybox:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1062920636}
-  m_Enabled: 1
-  m_CustomSkybox: {fileID: 0}
+  text: {fileID: 1845621426}
+  m_Font: {fileID: 12800000, guid: 83800f348b1804e558505379c0ef1d51, type: 3}
+  zoom: 2.5
+  world: Desert
 --- !u!1 &1108784192
 GameObject:
   m_ObjectHideFlags: 0
@@ -2855,7 +2832,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180.2, y: -228.3818}
+  m_AnchoredPosition: {x: 90, y: -251}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1134849904
@@ -2878,11 +2855,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
-    m_FontSize: 36
+    m_Font: {fileID: 12800000, guid: 4f35bbb528d4d47fa8fc3b6077c0da67, type: 3}
+    m_FontSize: 18
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 47
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -2890,7 +2867,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: SwimmingPool
+  m_Text: Swimming Pool
 --- !u!222 &1134849905
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3528,14 +3505,14 @@ RectTransform:
   m_GameObject: {fileID: 1652327569}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.21970548, y: 0.5094563, z: 0.98293}
+  m_LocalScale: {x: 0.26349258, y: 0.5604019, z: 0.60201514}
   m_Children: []
   m_Father: {fileID: 264870207}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180.2, y: -127}
+  m_AnchoredPosition: {x: 125, y: -143}
   m_SizeDelta: {x: 948, y: 510}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1652327571
@@ -3550,7 +3527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.96529156, b: 0.9622642, a: 0.392}
+  m_Color: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3893,7 +3870,7 @@ BoxCollider:
   m_GameObject: {fileID: 1765986628}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 16.203882, y: 1.1377583, z: 30.261845}
   m_Center: {x: -0.16733602, y: -1.0046164, z: -5.8509507}
@@ -3903,11 +3880,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1765986628}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 877e5843d18c646cd83db25f7738dbb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instanceScript: {fileID: 0}
 --- !u!1 &1842616893
 GameObject:
   m_ObjectHideFlags: 0
@@ -3990,6 +3968,8 @@ GameObject:
   - component: {fileID: 1845621425}
   - component: {fileID: 1845621427}
   - component: {fileID: 1845621426}
+  - component: {fileID: 1845621429}
+  - component: {fileID: 1845621428}
   m_Layer: 5
   m_Name: DesertTitle
   m_TagString: Untagged
@@ -4012,7 +3992,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180.2, y: -112.22577}
+  m_AnchoredPosition: {x: 90, y: -151}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1845621426
@@ -4035,11 +4015,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
-    m_FontSize: 36
+    m_Font: {fileID: 12800000, guid: 4f35bbb528d4d47fa8fc3b6077c0da67, type: 3}
+    m_FontSize: 18
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 47
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -4057,6 +4037,42 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1845621424}
   m_CullTransparentMesh: 0
+--- !u!61 &1845621428
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1845621424}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -25.0574, y: 1.2183685}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 108.0064, y: 26.808533}
+  m_EdgeRadius: 0
+--- !u!114 &1845621429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1845621424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb874adb257c42f5b53b7aedcf9ee20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1885631214
 GameObject:
   m_ObjectHideFlags: 0
@@ -4482,14 +4498,14 @@ RectTransform:
   m_GameObject: {fileID: 2105982952}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10.199997}
-  m_LocalScale: {x: 0.98718, y: 1, z: 1}
+  m_LocalScale: {x: 1.2583584, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 264870207}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180.2, y: -30.203308}
+  m_AnchoredPosition: {x: 113, y: -36}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2105982954
@@ -4504,7 +4520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.084905684, g: 0.063278764, b: 0.064834654, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4512,13 +4528,13 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
-    m_FontSize: 35
-    m_FontStyle: 3
-    m_BestFit: 0
-    m_MinSize: 10
+    m_Font: {fileID: 12800000, guid: 83800f348b1804e558505379c0ef1d51, type: 3}
+    m_FontSize: 34
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 0
     m_MaxSize: 41
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 1

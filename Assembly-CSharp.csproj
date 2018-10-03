@@ -53,8 +53,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Fonts\Script\scriptTexttest.cs" />
+     <Compile Include="Assets\Design\Fonts\Script\scriptTexttest.cs" />
      <Compile Include="Assets\Menu\ButtonManager.cs" />
+     <Compile Include="Assets\Menu\exitGame.cs" />
+     <Compile Include="Assets\Menu\loadMenu.cs" />
+     <Compile Include="Assets\Menu\playGame.cs" />
      <Compile Include="Assets\script\CameraController.cs" />
      <Compile Include="Assets\script\CameraFollow.cs" />
      <Compile Include="Assets\script\CameraSwitch.cs" />
@@ -66,8 +69,9 @@
      <Compile Include="Assets\script\waterCollision.cs" />
      <Compile Include="Assets\script\waterFloat.cs" />
      <None Include="Assets\audio\Rocklynn Productions - Water Splash Pack\Read me.txt" />
-     <None Include="Assets\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
-     <None Include="Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
+     <None Include="Assets\Design\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
+     <None Include="Assets\Design\Fonts\superchunky\license.txt" />
+     <None Include="Assets\Design\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
      <None Include="Assets\Stylized Nature Environment\ReadMe.txt" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/home/titouan/Documents/WorkSpace/VideoGame/DeathDiving/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

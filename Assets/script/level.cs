@@ -13,11 +13,9 @@ public class level : MonoBehaviour {
 	public int stage,levelLanding;
 	private Scene scene;
 	public GameObject instanceScript;
-	public AudioSource waterSound;
 	character characterInstance;
 	// Use this for initialization
 	void Start () {
-
 		levelLanding=0;
 		characterInstance = instanceScript.GetComponent<character>();
 		setScene(); 
@@ -28,7 +26,6 @@ public class level : MonoBehaviour {
 				alreadyTrigger = false;
 		}
 		else{
-			waterSound.Play();
 			coroutine = waitForRespawn(1.2f,col);
 			StartCoroutine(coroutine);
 		}						
@@ -53,8 +50,9 @@ public class level : MonoBehaviour {
 				}
 		}
 		else{
-			if(col.gameObject.name == "waterLanding"){
+			if(col.gameObject.name == "waterLanding" && alreadyTrigger == false){
 				setOrientation();
+				alreadyTrigger = true;
 			}
 		}		
 		rb.drag = 0;
@@ -83,7 +81,6 @@ public class level : MonoBehaviour {
 		scene = SceneManager.GetActiveScene();
 		parent = transform.parent;
 		diffParentChild = transform.position - parent.position;
-		waterSound = gameObject.GetComponent<AudioSource>();
 		levelPosition.Add(GameObject.Find("Position0").transform.position);
 		levelPosition.Add(GameObject.Find("Position1").transform.position);
 		levelPosition.Add(GameObject.Find("Position2").transform.position);
