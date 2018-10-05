@@ -90,13 +90,12 @@ public class character : MonoBehaviour {
 		//Jump
 		if(Input.GetKeyUp(KeyCode.Space) && onGround){
 			if(orientation==-1){
-				rb.AddRelativeForce(0,impulsion * Time.deltaTime,0,ForceMode.Impulse);	
-				// rb.AddRelativeForce(0,0,5f*(transform.rotation.x+(transform.rotation.x-0.25f)*inertia)*Time.deltaTime,ForceMode.Impulse);
+				rb.AddRelativeForce(0,impulsion * Time.deltaTime,0,ForceMode.Impulse);
 				rb.AddRelativeForce(0,0,-inertia*Time.deltaTime,ForceMode.Impulse);
 			}
 			else{
+				print(impulsion);
 				rb.AddRelativeForce(0,impulsion * Time.deltaTime,0,ForceMode.Impulse);
-				//rb.AddRelativeForce(0,0,5f*(0.25f-transform.rotation.x)*inertia*Time.deltaTime,ForceMode.Impulse);
 				rb.AddRelativeForce(0,0,inertia*Time.deltaTime,ForceMode.Impulse);
 			}
 			rb.constraints = RigidbodyConstraints.None;
@@ -136,7 +135,11 @@ public class character : MonoBehaviour {
 		inertia = newInertia;
 	}
 	public void adjustImpulsion(float newImpulsion){
-		impulsion = newImpulsion;
+		if(scene.name == "MountainLake"){
+			impulsion = newImpulsion + 150f;
+		}
+		else
+			impulsion = newImpulsion;
 	}
 }
 	

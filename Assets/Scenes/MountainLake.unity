@@ -608,7 +608,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 148821953}
   m_LocalRotation: {x: 0.16228326, y: 0.415788, z: -0.07567392, w: 0.89166033}
-  m_LocalPosition: {x: 16.7, y: 142.72, z: 60}
+  m_LocalPosition: {x: 45, y: 114.6, z: 77.6}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2249,8 +2249,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1338206715}
-  m_LocalRotation: {x: 0.122876726, y: 0.40431786, z: 0.054916896, w: -0.9046616}
-  m_LocalPosition: {x: 1017.9331, y: -284.10962, z: -507.9146}
+  m_LocalRotation: {x: -0.16228326, y: 0.41578794, z: 0.07567391, w: 0.8916603}
+  m_LocalPosition: {x: 45, y: -94.46, z: 77.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2314,7 +2314,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage: 0
   levelLanding: 0
+  scoreFinal: 0
   instanceScript: {fileID: 1353950733}
+  scorePrefab: {fileID: 1594399815503282, guid: c4dfb23223cc645fabaa8d2112294f2f,
+    type: 2}
 --- !u!114 &1353950736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2849,6 +2852,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1619240557}
   - component: {fileID: 1619240556}
+  - component: {fileID: 1619240558}
   m_Layer: 0
   m_Name: waterLandingReflectionSceneCamera
   m_TagString: Untagged
@@ -2909,6 +2913,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &1619240558
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1619240555}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
 --- !u!1 &1634643356
 GameObject:
   m_ObjectHideFlags: 0

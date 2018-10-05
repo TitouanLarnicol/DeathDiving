@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class waterCollision : MonoBehaviour {
 	ArrayList levelLanding = new ArrayList();
+	float[][] landingPosition;
 	GameObject flagTR,flagTL,flagBR,flagBL,landingPlane,landingZone;
 	private float width,height;
 	private Vector3 middle;
@@ -12,8 +14,10 @@ public class waterCollision : MonoBehaviour {
 	MeshFilter mf;
 	MeshRenderer mr;
 	Mesh m ;
+	Scene scene;
 	// Use this for initialization
 	void Start () {
+		scene = SceneManager.GetActiveScene();
 		levelInstance = instanceScript.GetComponent<level>();
 		flagTR = GameObject.Find("topRight");
 		flagTL = GameObject.Find("topLeft");
@@ -24,27 +28,27 @@ public class waterCollision : MonoBehaviour {
 		levelLanding.Add(false);
 		levelLanding.Add(false);
 		levelLanding.Add(false);
+		setPosition();
 		mf = landingPlane.AddComponent(typeof(MeshFilter)) as MeshFilter;
 		mr = landingPlane.AddComponent(typeof(MeshRenderer)) as MeshRenderer;
 		m = new Mesh();
-		setLanding();
-	
+		setLanding();	
 }
 	
 	// Update is called once per frame
 	void Update () {
+		Vector3 pos = landingZone.transform.position;
+		Vector3 scale = landingZone.transform.localScale;
 		if(levelInstance.levelLanding ==1 && levelLanding[1].Equals(false)){
-			Vector3 pos = landingZone.transform.position;
-			landingZone.transform.localScale = new Vector3(1f,1f,0.7f);
-			landingZone.transform.position = new Vector3(pos.x,pos.y,pos.z + 2.5f);
+			landingZone.transform.localScale = new Vector3(scale.x,scale.y,scale.z-landingPosition[0][0]);
+			landingZone.transform.position = new Vector3(pos.x,pos.y,pos.z + landingPosition[1][0]);
 			levelLanding[1]=true;
 			setLanding();
 		}
 		else
 			if(levelInstance.levelLanding ==2 && levelLanding[2].Equals(false)){
-				Vector3 pos = landingZone.transform.position;
-				landingZone.transform.localScale = new Vector3(1f,1f,0.5f);
-				landingZone.transform.position = new Vector3(pos.x,pos.y,pos.z + 5f);
+				landingZone.transform.localScale = new Vector3(scale.x,scale.y,landingPosition[0][1]);
+				landingZone.transform.position = new Vector3(pos.x,pos.y,pos.z + landingPosition[1][1]);
 				levelLanding[2]=true;
 				setLanding();
 			}
@@ -94,5 +98,22 @@ public class waterCollision : MonoBehaviour {
 		width = getWidth(flagTR,flagTL);
 		height = getHeight(flagBR,flagTR);
 		setPlane();
+	}
+	void setPosition(){
+		float[] list1 = new float[2];
+		float[] list2 =new float[2];;
+		print(scene.name);
+		switch(scene.name){
+			case "Desert":
+				list1 = new float[2] {0.3f,0.5f};
+				list2 = new float[2] {2.5f,5f};
+				break;
+			case "MountainLake":
+				list1 = new float[2] {1f,2f};
+				list2 = new float[2] {2.5f,5f};
+				break;
+		}
+		landingPosition = new float[][]{list1,list2};
+		 
 	}
 }
