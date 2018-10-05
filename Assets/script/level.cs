@@ -13,6 +13,7 @@ public class level : MonoBehaviour {
 	Quaternion rotationOnCollision;
 	public int stage,levelLanding;
 	private Scene scene;
+	public float scoreFinal;
 	public GameObject instanceScript,scorePrefab;
 	character characterInstance;
 	// Use this for initialization
@@ -103,6 +104,7 @@ public class level : MonoBehaviour {
 		if(Mathf.Abs(rotationOnCollision.x)>0.5){
 			Instantiate(scorePrefab,transform.position,Quaternion.identity,transform);
 		}
+		scoreFinal += rotationOnCollision.x*100; 
 		
 	}
 }

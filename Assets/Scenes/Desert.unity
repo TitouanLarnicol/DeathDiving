@@ -3601,6 +3601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stage: 0
   levelLanding: 0
+  scoreFinal: 0
   instanceScript: {fileID: 1508919677}
   scorePrefab: {fileID: 1594399815503282, guid: c4dfb23223cc645fabaa8d2112294f2f,
     type: 2}

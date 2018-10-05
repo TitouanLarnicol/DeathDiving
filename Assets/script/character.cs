@@ -21,10 +21,11 @@ public class character : MonoBehaviour {
 		scene = SceneManager.GetActiveScene();
 		orientation=1f;
 		onGround=true;
+		moveSpeed = 500f;
 		adjustInertia(300f);
 		adjustImpulsion(300f);
 		rb.constraints = RigidbodyConstraints.FreezePositionZ;
-		rb.angularDrag = 1;
+		rb.angularDrag = 0.85f;
 		
 	}
 	
@@ -32,7 +33,8 @@ public class character : MonoBehaviour {
 	void Update () {
 		//Frontward position
 		
-			if(Input.GetKeyDown(KeyCode.K) && !onGround){
+		if(Input.GetKeyDown(KeyCode.K) && !onGround){
+			rb.maxAngularVelocity = 6f;
 			animator.SetBool("isBackflip",false);
 			animator.SetBool("isNormal",true);			
 		}
@@ -41,10 +43,12 @@ public class character : MonoBehaviour {
 			animator.SetBool("isNormal",false);
 		}
 		if(Input.GetKeyDown(KeyCode.J) && !onGround){
+			rb.maxAngularVelocity = 8f;
 			animator.SetBool("goTuck",true);
 			animator.SetBool("isTucking",false);
 		}
-		if(Input.GetKeyUp(KeyCode.J) && !onGround){
+		if(Input.GetKeyUp(KeyCode.J) && !onGround){	
+			rb.maxAngularVelocity = 7f;		
 			animator.SetBool("goTuck",false);
 			animator.SetBool("isTucking",true);
 		}
@@ -88,7 +92,7 @@ public class character : MonoBehaviour {
 			if(orientation==-1){
 				rb.AddRelativeForce(0,impulsion * Time.deltaTime,0,ForceMode.Impulse);	
 				// rb.AddRelativeForce(0,0,5f*(transform.rotation.x+(transform.rotation.x-0.25f)*inertia)*Time.deltaTime,ForceMode.Impulse);
-				rb.AddRelativeForce(0,0,inertia*Time.deltaTime,ForceMode.Impulse);
+				rb.AddRelativeForce(0,0,-inertia*Time.deltaTime,ForceMode.Impulse);
 			}
 			else{
 				rb.AddRelativeForce(0,impulsion * Time.deltaTime,0,ForceMode.Impulse);
@@ -112,7 +116,9 @@ public class character : MonoBehaviour {
 		if(Input.GetKey(KeyCode.H) && !onGround){
 			rb.AddTorque(-transform.forward*moveSpeed * Time.deltaTime,ForceMode.Impulse);	
 		}
-		
+		if(Input.GetKey(KeyCode.G) && !onGround){
+			rb.AddTorque(transform.forward*moveSpeed * Time.deltaTime,ForceMode.Impulse);	
+		}
 		if(Input.GetKey(KeyCode.LeftArrow)&& !onGround){
 			rb.AddTorque(-transform.up*moveSpeed * Time.deltaTime,ForceMode.Impulse);			
 		}
