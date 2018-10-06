@@ -7,10 +7,8 @@ using UnityEngine.EventSystems;
 public class loadMenu : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
 
 	public Animator animator;
-	public GameObject Kyle;
 	
 	void Start () {
-		Kyle = GameObject.Find("Robot Kyle");
 		animator = GetComponent<Animator>();
 	}
 	void Update(){

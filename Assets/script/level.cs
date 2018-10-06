@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class level : MonoBehaviour {
@@ -14,7 +15,7 @@ public class level : MonoBehaviour {
 	public int stage,levelLanding;
 	private Scene scene;
 	public float scoreFinal;
-	public GameObject instanceScript,scorePrefab;
+	public GameObject instanceScript,scorePrefab,scoreAddition;
 	character characterInstance;
 	// Use this for initialization
 	void Start () {
@@ -99,13 +100,10 @@ public class level : MonoBehaviour {
 	}
 
 	void showScore(){
-		Debug.Log(scorePrefab.GetComponent<TextMesh>());
-		scorePrefab.GetComponent<TextMesh>().text = (rotationOnCollision.x*100).ToString();
-		if(Mathf.Abs(rotationOnCollision.x)>0.5){
-			Instantiate(scorePrefab,transform.position,Quaternion.identity,transform);
-		}
-		Instantiate(scorePrefab,transform.position,Quaternion.identity,transform);
-		scoreFinal += rotationOnCollision.x*100; 
-		
+			string score = scoreAddition.GetComponent<Text>().text;
+			float s = float.Parse(score);
+			scorePrefab.GetComponent<TextMesh>().text = (rotationOnCollision.x*100).ToString();
+			scoreAddition.GetComponent<Text>().text = (s+rotationOnCollision.x*100).ToString();
+			Instantiate(scorePrefab,transform.position,Quaternion.identity,transform);	
 	}
 }

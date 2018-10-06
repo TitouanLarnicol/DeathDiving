@@ -38,7 +38,7 @@ public class character : MonoBehaviour {
 			animator.SetBool("isBackflip",false);
 			animator.SetBool("isNormal",true);			
 		}
-		if(Input.GetKeyUp(KeyCode.K) && !onGround){
+		if(Input.GetKeyUp(KeyCode.K)){
 			animator.SetBool("isBackflip",true);
 			animator.SetBool("isNormal",false);
 		}
@@ -47,7 +47,7 @@ public class character : MonoBehaviour {
 			animator.SetBool("goTuck",true);
 			animator.SetBool("isTucking",false);
 		}
-		if(Input.GetKeyUp(KeyCode.J) && !onGround){	
+		if(Input.GetKeyUp(KeyCode.J)){	
 			rb.maxAngularVelocity = 7f;		
 			animator.SetBool("goTuck",false);
 			animator.SetBool("isTucking",true);
@@ -56,7 +56,7 @@ public class character : MonoBehaviour {
 			animator.SetBool("goJapan",true);
 			animator.SetBool("isJapan",false);
 		}
-		if(Input.GetKeyUp(KeyCode.X)  && !onGround){
+		if(Input.GetKeyUp(KeyCode.X)){
 			animator.SetBool("goJapan",false);
 			animator.SetBool("isJapan",true);
 		}
