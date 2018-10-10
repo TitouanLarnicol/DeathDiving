@@ -17,9 +17,7 @@ public class loadMenu : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler {
 	// Update is called once per frame
 	  public void OnPointerEnter(PointerEventData eventData)
      {
-		animator.SetBool("textAnimation",true);
-		// Kyle.GetComponent<Animation>().Play();
-		
+		animator.SetBool("textAnimation",true);		
      }
 	 public void OnPointerExit(PointerEventData eventData)
      {

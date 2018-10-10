@@ -19,6 +19,7 @@ public class character : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		rb = GetComponent<Rigidbody>();
 		scene = SceneManager.GetActiveScene();
+		animator.SetBool("isImpulsion",true);
 		orientation=1f;
 		onGround=true;
 		moveSpeed = 500f;
@@ -34,6 +35,7 @@ public class character : MonoBehaviour {
 		//Frontward position
 		
 		if(Input.GetKeyDown(KeyCode.K) && !onGround){
+			print("here");
 			rb.maxAngularVelocity = 6f;
 			animator.SetBool("isBackflip",false);
 			animator.SetBool("isNormal",true);			
@@ -89,6 +91,7 @@ public class character : MonoBehaviour {
 	void FixedUpdate(){
 		//Jump
 		if(Input.GetKeyUp(KeyCode.Space) && onGround){
+			animator.SetBool("isImpulsion",true);
 			if(orientation==-1){
 				rb.AddRelativeForce(0,impulsion * Time.deltaTime,0,ForceMode.Impulse);
 				rb.AddRelativeForce(0,0,-inertia*Time.deltaTime,ForceMode.Impulse);
@@ -101,28 +104,32 @@ public class character : MonoBehaviour {
 			rb.constraints = RigidbodyConstraints.None;
 			onGround=false;		
 		}
+		if(Input.GetKeyDown(KeyCode.Space) && onGround){
+			animator.SetBool("isImpulsion",false);
+		}
+		
 		if(Input.GetKey(KeyCode.Space) && onGround){
 			impulsion*=1.02f;
 			inertia*=1.01f;
 			rb.constraints = RigidbodyConstraints.FreezePositionZ;
 		}
 		if(Input.GetKey(KeyCode.DownArrow)&& !onGround){
-			rb.AddTorque(-transform.right*moveSpeed*Time.deltaTime,ForceMode.Impulse);
+			rb.AddTorque(-transform.right*moveSpeed*Time.deltaTime,ForceMode.Acceleration);
 		}
 		if(Input.GetKey(KeyCode.UpArrow) && !onGround){
-			rb.AddTorque(transform.right*moveSpeed * Time.deltaTime,ForceMode.Impulse);
+			rb.AddTorque(transform.right*moveSpeed * Time.deltaTime,ForceMode.Acceleration);
 		}
 		if(Input.GetKey(KeyCode.H) && !onGround){
-			rb.AddTorque(-transform.forward*moveSpeed * Time.deltaTime,ForceMode.Impulse);	
+			rb.AddTorque(-transform.forward*moveSpeed * Time.deltaTime,ForceMode.Acceleration);	
 		}
 		if(Input.GetKey(KeyCode.G) && !onGround){
-			rb.AddTorque(transform.forward*moveSpeed * Time.deltaTime,ForceMode.Impulse);	
+			rb.AddTorque(transform.forward*moveSpeed * Time.deltaTime,ForceMode.Acceleration);	
 		}
 		if(Input.GetKey(KeyCode.LeftArrow)&& !onGround){
-			rb.AddTorque(-transform.up*moveSpeed * Time.deltaTime,ForceMode.Impulse);			
+			rb.AddTorque(-transform.up*moveSpeed * Time.deltaTime,ForceMode.Acceleration);			
 		}
 		if(Input.GetKey(KeyCode.RightArrow)&& !onGround){	
-			rb.AddTorque(transform.up*moveSpeed * Time.deltaTime,ForceMode.Impulse);			
+			rb.AddTorque(transform.up*moveSpeed * Time.deltaTime,ForceMode.Acceleration);			
 		}
 	}
 	void OnCollisionEnter(Collision col){

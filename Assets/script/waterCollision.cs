@@ -30,7 +30,7 @@ public class waterCollision : MonoBehaviour {
 		levelLanding.Add(false);
 		setPosition();
 		mf = landingPlane.AddComponent(typeof(MeshFilter)) as MeshFilter;
-		mr = landingPlane.AddComponent(typeof(MeshRenderer)) as MeshRenderer;
+		// mr = landingPlane.AddComponent(typeof(MeshRenderer)) as MeshRenderer;
 		m = new Mesh();
 		setLanding();	
 }
@@ -110,6 +110,10 @@ public class waterCollision : MonoBehaviour {
 				break;
 			case "MountainLake":
 				list1 = new float[2] {1f,2f};
+				list2 = new float[2] {2.5f,5f};
+				break;
+			case "City":
+				list1 = new float[2] {0.5f,0.7f};
 				list2 = new float[2] {2.5f,5f};
 				break;
 		}
