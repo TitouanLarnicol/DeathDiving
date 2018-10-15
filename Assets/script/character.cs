@@ -23,8 +23,6 @@ public class character : MonoBehaviour {
 		orientation=1f;
 		onGround=true;
 		moveSpeed = 500f;
-		adjustInertia(300f);
-		adjustImpulsion(300f);
 		rb.constraints = RigidbodyConstraints.FreezePositionZ;
 		rb.angularDrag = 0.85f;
 		
@@ -134,19 +132,28 @@ public class character : MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision col){
 		onGround=true;
-		adjustImpulsion(300f);
-		adjustInertia(300f);
+		adjustImpulsion(400f);
+		adjustInertia(400f);
 	}
 
 	public void adjustInertia(float newInertia){
 		inertia = newInertia;
 	}
 	public void adjustImpulsion(float newImpulsion){
-		if(scene.name == "MountainLake"){
-			impulsion = newImpulsion + 150f;
+		switch(scene.name){
+			case "MountainLake":
+				impulsion = newImpulsion + 200f;
+				break;
+			case "City":
+				impulsion = newImpulsion + 400f;
+				break;
+			case "Desert":
+				impulsion = newImpulsion;
+				break;
+			case "SwimmingPool":
+				impulsion = newImpulsion + 200f;
+				break;
 		}
-		else
-			impulsion = newImpulsion;
 	}
 }
 	
