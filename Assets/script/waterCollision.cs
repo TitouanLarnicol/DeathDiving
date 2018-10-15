@@ -116,6 +116,10 @@ public class waterCollision : MonoBehaviour {
 				list1 = new float[2] {0.5f,0.7f};
 				list2 = new float[2] {2.5f,5f};
 				break;
+			case "SwimmingPool":
+				list1 = new float[2] {0.5f,0.7f};
+				list2 = new float[2] {2.5f,5f};
+				break;
 		}
 		landingPosition = new float[][]{list1,list2};
 		 
