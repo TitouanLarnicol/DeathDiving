@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: bf1ee642d105349d28d7b6c943b727cf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/chooseWorld.unity
     guid: 6838aa6b9fd734a7caac5f1abe4b0a5d
   - enabled: 1
@@ -23,13 +23,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/City.unity
     guid: d69118e85963b4f83966cc82adb976ec
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Desert.unity
     guid: 69c79a516aaff4c3aa4b2135ee762bb5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MountainLake.unity
     guid: d765af64d4b034c63b2f78f86598fbc2
   m_configObjects: {}

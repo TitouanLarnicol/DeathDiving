@@ -20,6 +20,8 @@ public class character : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
 		scene = SceneManager.GetActiveScene();
 		animator.SetBool("isImpulsion",true);
+		animator.SetBool("isMute",true);
+		animator.SetBool("isSafety",true);
 		orientation=1f;
 		onGround=true;
 		moveSpeed = 500f;
@@ -59,6 +61,18 @@ public class character : MonoBehaviour {
 		if(Input.GetKeyUp(KeyCode.X)){
 			animator.SetBool("goJapan",false);
 			animator.SetBool("isJapan",true);
+		}
+		if(Input.GetKeyDown(KeyCode.W)  && !onGround ){
+			animator.SetBool("isMute",false);
+		}
+		if(Input.GetKeyUp(KeyCode.W)){
+			animator.SetBool("isMute",true);
+		}
+		if(Input.GetKeyDown(KeyCode.S)  && !onGround ){
+		animator.SetBool("isSafety",false);
+		}
+		if(Input.GetKeyUp(KeyCode.S)){
+			animator.SetBool("isSafety",true);
 		}
 		if(Input.GetKeyDown(KeyCode.Mouse1)){
 			if(orientation==1f){
