@@ -17,6 +17,7 @@ public class level : MonoBehaviour {
 	public float scoreFinal;
 	public GameObject instanceScript,scorePrefab,scoreAddition;
 	character characterInstance;
+	levelControl levelInstance;
 	// Use this for initialization
 	void Start () {
 		levelLanding=0;
@@ -60,6 +61,20 @@ public class level : MonoBehaviour {
 						setOrientation();
 						alreadyTrigger = false;
 					}
+					else{
+						switch(scene.name){
+							case "Desert":
+								levelControl.levelArray[1] = true;
+								break;
+							case "MountainLake":
+								levelControl.levelArray[2] = true;
+								break;
+							case "City":
+								levelControl.levelArray[3] = true;
+								break;
+						}
+						SceneManager.LoadScene("chooseWorld");
+					}
 				}
 				Debug.Log(stage);
 		}
@@ -72,7 +87,6 @@ public class level : MonoBehaviour {
 		rb.drag = 0;
 		rb.angularDrag = 1;
     }
-
 	void setOrientation(){
 			if(scene.name=="MountainLake"){
 					transform.rotation = Quaternion.Euler (0,180, 0);

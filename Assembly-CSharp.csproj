@@ -95,6 +95,7 @@
      <Compile Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
      <Compile Include="Assets\Menu\ButtonManager.cs" />
      <Compile Include="Assets\Menu\exitGame.cs" />
+     <Compile Include="Assets\Menu\levelControl.cs" />
      <Compile Include="Assets\Menu\loadMenu.cs" />
      <Compile Include="Assets\Menu\menuMusic.cs" />
      <Compile Include="Assets\Menu\playGame.cs" />
