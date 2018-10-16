@@ -102,8 +102,8 @@ public class level : MonoBehaviour {
 	void showScore(){
 			string score = scoreAddition.GetComponent<Text>().text;
 			float s = float.Parse(score);
-			scorePrefab.GetComponent<TextMesh>().text = (rotationOnCollision.x*100).ToString();
+			scorePrefab.GetComponent<Text>().text = (rotationOnCollision.x*100).ToString();
 			scoreAddition.GetComponent<Text>().text = (s+rotationOnCollision.x*100).ToString();
-			Instantiate(scorePrefab,transform.position,Quaternion.identity,transform);	
+			Instantiate(scorePrefab,GameObject.Find("Canvas").transform.position,Quaternion.identity,GameObject.Find("Canvas").transform);	
 	}
 }

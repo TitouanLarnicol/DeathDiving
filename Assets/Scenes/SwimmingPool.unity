@@ -1611,7 +1611,7 @@ MonoBehaviour:
   levelLanding: 0
   scoreFinal: 0
   instanceScript: {fileID: 528717947}
-  scorePrefab: {fileID: 1594399815503282, guid: c4dfb23223cc645fabaa8d2112294f2f,
+  scorePrefab: {fileID: 1424386907907732, guid: 9a16a7f5528be437baaf33d2df2f0a8d,
     type: 2}
   scoreAddition: {fileID: 113746019}
 --- !u!114 &528717951
@@ -3964,8 +3964,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1418287699}
-  m_LocalRotation: {x: -0.06518706, y: 0.6586851, z: 0.05745065, w: 0.7473848}
-  m_LocalPosition: {x: -655.83606, y: -203.01416, z: 46.313206}
+  m_LocalRotation: {x: -0.13277501, y: 0.0022488604, z: 0.00030126053, w: 0.99114364}
+  m_LocalPosition: {x: -4.009383, y: 16.846966, z: -7.030963}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

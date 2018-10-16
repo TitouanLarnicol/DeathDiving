@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/MountainLake.unity
+- path: Assets/Scenes/SwimmingPool.unity
   isLoaded: 1
   isActive: 1
