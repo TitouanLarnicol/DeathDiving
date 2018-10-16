@@ -11,6 +11,7 @@ public class character : MonoBehaviour {
 	private Rigidbody rb;
 	Scene scene;
 	public Animator animator;
+	public AudioSource sourceScream;
 	// Use this for initialization
 	void Awake(){
 		childScript = this;
@@ -35,10 +36,11 @@ public class character : MonoBehaviour {
 		//Frontward position
 		
 		if(Input.GetKeyDown(KeyCode.K) && !onGround){
-			print("here");
 			rb.maxAngularVelocity = 6f;
+			sourceScream.Play();
 			animator.SetBool("isBackflip",false);
-			animator.SetBool("isNormal",true);			
+			animator.SetBool("isNormal",true);	
+					
 		}
 		if(Input.GetKeyUp(KeyCode.K)){
 			animator.SetBool("isBackflip",true);

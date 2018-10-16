@@ -11,7 +11,7 @@ public class level : MonoBehaviour {
 	private IEnumerator coroutine;
 	Transform parent;
 	Vector3 diffParentChild,positionOnCollision;
-	Quaternion rotationOnCollision;
+	private Vector3 rotationOnCollision;
 	public int stage,levelLanding;
 	private Scene scene;
 	public float scoreFinal;
@@ -23,10 +23,12 @@ public class level : MonoBehaviour {
 		characterInstance = instanceScript.GetComponent<character>();
 		setScene(); 
 	}
-
 	void OnCollisionEnter(Collision col){
-		positionOnCollision = transform.position;
-		rotationOnCollision = transform.rotation;
+		if(col.gameObject.name=="landingPlane"){
+			positionOnCollision = transform.position;
+			rotationOnCollision = transform.eulerAngles;
+		}
+		
 		if(col.gameObject.name =="Position0" || col.gameObject.name =="Position1" || col.gameObject.name =="Position2"){
 				alreadyTrigger = false;
 		}
@@ -102,8 +104,16 @@ public class level : MonoBehaviour {
 	void showScore(){
 			string score = scoreAddition.GetComponent<Text>().text;
 			float s = float.Parse(score);
-			scorePrefab.GetComponent<Text>().text = (rotationOnCollision.x*100).ToString();
-			scoreAddition.GetComponent<Text>().text = (s+rotationOnCollision.x*100).ToString();
+			double scoreHit;
+			if(Mathf.Abs(rotationOnCollision.x)<=90){
+				scoreHit = (100-(90-Mathf.Abs(rotationOnCollision.x)));
+				scorePrefab.GetComponent<Text>().text = (100-(90-Mathf.Abs(rotationOnCollision.x))).ToString();
+			}
+			else{
+				scoreHit = (100-(270-Mathf.Abs(rotationOnCollision.x)));
+				scorePrefab.GetComponent<Text>().text = (100-(Mathf.Abs(270-rotationOnCollision.x))).ToString();
+			}
+			scoreAddition.GetComponent<Text>().text = (s+scoreHit).ToString();
 			Instantiate(scorePrefab,GameObject.Find("Canvas").transform.position,Quaternion.identity,GameObject.Find("Canvas").transform);	
 	}
 }
