@@ -11,4 +11,7 @@ public class ButtonManager : MonoBehaviour {
 	public void goFreeMode(){
 		SceneManager.LoadScene("FreeWorld");
 	}
+	public void goMenu(){
+		SceneManager.LoadScene("Menu");
+	}
 }
