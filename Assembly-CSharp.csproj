@@ -102,15 +102,10 @@
      <Compile Include="Assets\script\CameraController.cs" />
      <Compile Include="Assets\script\CameraFollow.cs" />
      <Compile Include="Assets\script\CameraSwitch.cs" />
-     <Compile Include="Assets\script\character.cs" />
      <Compile Include="Assets\script\characterFreeWorld.cs" />
      <Compile Include="Assets\script\Helper.cs" />
-     <Compile Include="Assets\script\level.cs" />
      <Compile Include="Assets\script\levelFreeWorld.cs" />
-     <Compile Include="Assets\script\loadWorld.cs" />
      <Compile Include="Assets\script\trick.cs" />
-     <Compile Include="Assets\script\waterCollision.cs" />
-     <Compile Include="Assets\script\waterFloat.cs" />
      <None Include="Assets\Free_Rocks\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
