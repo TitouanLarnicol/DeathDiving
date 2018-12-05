@@ -37,6 +37,11 @@ public class playGame : MonoBehaviour{
 		canvas.enabled = false;
 		controls.enabled = true;
      }
+	  public void controlsOut()
+     {
+		canvas.enabled = true;
+		controls.enabled = false;
+     }
 	 public void backflip()
      {
 		 this.GetComponent<Animation>().Play("backflipLayout");

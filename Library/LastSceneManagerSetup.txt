@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/FreeMode.unity
+- path: Assets/Scenes/chooseWorld.unity
   isLoaded: 1
   isActive: 1

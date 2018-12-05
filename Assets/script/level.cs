@@ -76,7 +76,6 @@ public class level : MonoBehaviour {
 						SceneManager.LoadScene("chooseWorld");
 					}
 				}
-				Debug.Log(stage);
 		}
 		else{
 			if(col.gameObject.name == "waterLanding"){

@@ -47,7 +47,7 @@ public class waterCollision : MonoBehaviour {
 		}
 		else
 			if(levelInstance.levelLanding ==2 && levelLanding[2].Equals(false)){
-				landingZone.transform.localScale = new Vector3(scale.x,scale.y,landingPosition[0][1]);
+				landingZone.transform.localScale = new Vector3(scale.x,scale.y,scale.z-landingPosition[0][1]);
 				landingZone.transform.position = new Vector3(pos.x,pos.y,pos.z + landingPosition[1][1]);
 				levelLanding[2]=true;
 				setLanding();
@@ -105,19 +105,19 @@ public class waterCollision : MonoBehaviour {
 		print(scene.name);
 		switch(scene.name){
 			case "Desert":
-				list1 = new float[2] {0.3f,0.5f};
+				list1 = new float[2] {0.15f,0.3f};
 				list2 = new float[2] {2.5f,5f};
 				break;
 			case "MountainLake":
-				list1 = new float[2] {1f,2f};
-				list2 = new float[2] {2.5f,5f};
+				list1 = new float[2] {0.5f,1f};
+				list2 = new float[2] {1f,2f};
 				break;
 			case "City":
-				list1 = new float[2] {0.5f,0.7f};
+				list1 = new float[2] {0.3f,0.5f};
 				list2 = new float[2] {2.5f,5f};
 				break;
 			case "SwimmingPool":
-				list1 = new float[2] {0.5f,0.7f};
+				list1 = new float[2] {0.3f,0.5f};
 				list2 = new float[2] {2.5f,5f};
 				break;
 		}
